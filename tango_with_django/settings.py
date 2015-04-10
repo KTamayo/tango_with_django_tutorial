@@ -27,7 +27,7 @@ TEMPLATE_PATH  = os.path.join(BASE_DIR, 'templates')
 TEMPLATE_DIRS  = [TEMPLATE_PATH,]
 
 ALLOWED_HOSTS = []
-
+LOGIN_URL = '/rango/login/'
 
 # Application definition
 

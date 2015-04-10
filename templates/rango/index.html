@@ -1,42 +1,32 @@
-<!DOCTYPE html>
-
+{% extends 'rango/base.html' %}:
 {% load staticfiles %} <!-- New line -->
 
-<html>
-    
-    <head>
-        <title>Rango</title>  
-    </head>
+{% block body_block %}
+{% if user.is_authenticated %}
+    <img src="{% static "images/howdy.jpeg" %}" alt="Buy the ticket, take the ride."/><br><br>
 
-    <body>
-        <h1>Rango says...</h1>
-        <a href="/rango/about/"> <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango"/></a><br>
+    {% if categories %}
+        <br><strong>Available Categories:</strong>
+        <ul>
+            {% for category in categories %}
+            <li> <a href="{% url 'category' category.slug %}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <strong>There are no categories present.</strong>
+    {% endif %}
 
-<br></br>
-        {% if categories %}
-        <strong>Available Categories:</strong>
-            <ul>
-                {% for category in categories %}
-                <li> <a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <strong>There are no categories present.</strong>
-        {% endif %}
+        <br>
 
-<br></br>
-        {% if pages %}
-        <strong>Top Five Most Visited:</strong>
-            <ul>
-                {% for page in pages %}
-                <li> {{ page}} </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <strong>There are no pages present.</strong>
-        {% endif %}
-
-
-    </body>
-        
-</html>
+    {% if pages %}
+        <strong>Top Five Most Visited Pages:</strong>
+        <ul>
+            {% for page in pages %}
+            <li> {{ page }} </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <strong>There are no pages present.</strong>
+    {% endif %}
+{% endif %} 
+{% endblock body_block %}
