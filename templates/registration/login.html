@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+{% extends "registration/base_register.html" %}
+
+{% block body_block %}
+<link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+<div class="pull-left">
+<h1>Let me in!</h1><br>
+<form class="form-signin" role="form" method="post" action=".">
+{% csrf_token %}
+<h2 class="form-signin-heading">Credentials please...</h2>
+
+<input class="form-control" id="id_username"  name="username" type="text" maxlength="60" placeholder="Username" required />
+
+<br>
+<input  class="form-control" id="id_password"  name="password"  type="password" placeholder="Password" required />
+
+<br>
+<button class="btn btn-lg btn-primary" type="submit" value="Submit" />Sign in</button>
+
+<br><br><p>Not a member?<br><a href="{% url 'registration_register' %}">Register!</a></p>
+</form>
+</div>
+{% endblock %}

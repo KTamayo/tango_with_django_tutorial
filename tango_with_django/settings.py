@@ -27,7 +27,7 @@ TEMPLATE_PATH  = os.path.join(BASE_DIR, 'templates')
 TEMPLATE_DIRS  = [TEMPLATE_PATH,]
 
 ALLOWED_HOSTS = []
-LOGIN_URL = '/rango/login/'
+LOGIN_URL = '/accounts/login/'
 
 # Application definition
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango',
+    'registration',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -89,3 +90,8 @@ STATICFILES_DIRS = (
 )
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+REGISTRATION_OPEN = True # Users can register if true
+ACCOUNT_ACTIVATION_DAYS = 7 # 1 week activation window
+REGISTRATION_AUTO_LOGIN = True 
+LOGIN_REDIRECT_URL = '/rango/' # redirect url on login
+LOGIN_URL = '/accounts/login/' # redirect url on auth content attempt
