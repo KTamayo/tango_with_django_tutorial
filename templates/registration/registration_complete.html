@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<!--Need to add redirect on successful registration See TWD.12.3-->
+{% extends "registration/base_register.html" %}
+{% load staticfiles %}
+{% block body_block %}
+  <h2>You are now registered for the American dream...</h2>
+  <img src="{% static "images/howdy.jpeg" %}" alt="Buy the ticket, take the ride."/>
+  <br><br>
+  <a href="{% url 'auth_login' %}" class="btn btn-primary btn-large">Buy the ticket, take the ride.</a><br/>
+{% endblock %}

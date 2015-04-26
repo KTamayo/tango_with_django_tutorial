@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends "registration/base_register.html" %}
+{% load staticfiles %}
+{% block body_block %}
+<form role="form" method="post" action".">
+<h2 class="form-signin-heading">This way to drugs, alcohol, violence or insanity</h1>
+{% csrf_token %}
+<img src="{% static "images/welcome.jpeg" %}"/><br><br>
+<h4><strong>You know what to do. </strong></h4>
+<div class="form-group">
+    <p class="required"><!--<label for="id_username">Username:</label>-->
+<input class="form-control" id="id_username" maxlength="30" name="username" type="text" placeholder="Enter username"/></p>
+</div>
+
+<div class="form-group">
+    <p class="required"><!--<label for="id_email">E-mail:</label>-->
+<input class="form-control" id="id_email" name="email" type="email" placeholder="Enter email"/></p>
+</div>
+
+<div class="form-group">
+    <p class="required"><!--<label for="id_password1">Password:</label>-->
+<input class="form-control" id="id_password1" name="password1" type="password" placeholder="Enter Password"/></p>
+</div>
+
+<div class="form-group">
+    <p class="required"><!--<label for="id_password2">Password (again):</label>-->
+<input class="form-control" id="id_password2" name="password2" type="password" placeholder="Enter password again"/></p>
+</div>
+
+<button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+{% endblock body_block %}

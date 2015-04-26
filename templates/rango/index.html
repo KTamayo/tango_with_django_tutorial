@@ -3,30 +3,50 @@
 
 {% block body_block %}
 {% if user.is_authenticated %}
-    <img src="{% static "images/howdy.jpeg" %}" alt="Buy the ticket, take the ride."/><br><br>
+<div class="jumbotron fluid-container page-header">
+    <h1> Rango says...hello {{ user.username }}!</h1>
+</div>
 
-    {% if categories %}
-        <br><strong>Available Categories:</strong>
-        <ul>
+<div class="fluid-container">
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Categories</div>
+        <div class="panel-body">
+          {% if categories %}
+            <strong>Available Categories:</strong>
+            <ul>
             {% for category in categories %}
-            <li> <a href="{% url 'category' category.slug %}">{{ category.name }}</a></li>
+              <li> <a href="{% url 'category' category.slug %}">{{ category.name }}</a></li>
             {% endfor %}
-        </ul>
-    {% else %}
-        <strong>There are no categories present.</strong>
-    {% endif %}
+            </ul>
+          {% else %}
+            <strong>There are no categories present.</strong>
+          {% endif %}
+        </div>
+      </div>
+    </div>
 
-        <br>
-
-    {% if pages %}
-        <strong>Top Five Most Visited Pages:</strong>
-        <ul>
+    <div class="col-xs-12 col-sm-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Popular Pages</div>
+        <div class="panel-body">
+          {% if pages %}
+            <strong>Top Five Most Visited Pages:</strong>
+            <ul>
             {% for page in pages %}
-            <li> {{ page }} </li>
+            <li> <a href="{{page.url}}">{{ page }} </li>
             {% endfor %}
-        </ul>
-    {% else %}
-        <strong>There are no pages present.</strong>
-    {% endif %}
+            </ul>
+          {% else %}
+            <strong>There are no pages present.</strong>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 {% endif %} 
 {% endblock body_block %}
